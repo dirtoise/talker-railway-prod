@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, send_from_directory
 from flask_migrate import Migrate
 from flask_restx import Api
 from flask_jwt_extended import JWTManager
@@ -14,7 +14,7 @@ from namespaces.contact import contact_ns
 from namespaces.message import message_ns
 
 def create_app(config_obj=DevConfig):
-    app = Flask(__name__)
+    app = Flask(__name__, static_url_path="/",static_folder="build", template_folder="build")
     app.config.from_object(config_obj)
     api = Api(app, validate=True, doc="/docs") # remove doc on prod
 
@@ -30,6 +30,12 @@ def create_app(config_obj=DevConfig):
     db.init_app(app)
     JWTManager(app)
     socketio.init_app(app, cors_allowed_origins="*", logger=True, engineio_logger=True)
+    @app.route("/")
+    def index():
+        return app.send_static_file('index.html')
+    @app.errorhandler(404)
+    def not_found(err):
+        return app.send_static_file('index.html')
 
     @app.shell_context_processor
     def make_shell_context():
