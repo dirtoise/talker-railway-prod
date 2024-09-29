@@ -1,6 +1,6 @@
 from app import create_app, socketio
-from config import DevConfig
+from config import DevConfig, ProdConfig
 
 if __name__ == '__main__':
-    app = create_app(DevConfig)
+    app = create_app(ProdConfig)
     socketio.run(app)
