@@ -13,7 +13,6 @@ def go_online(data):
     for dic in onlineUsers:
         if dic.get("username") == data.get("username"):
             dic.get("socketid") == data.get("socketid")
-    print(f"CURRENTLY ONLINE: {onlineUsers}")
     
 def go_offline(data):
     global onlineUsers
@@ -30,26 +29,20 @@ def handle_connect():
 @socketio.on("go_online")
 def handle_go_online(data):
     go_online({"username":data, "socketid":request.sid})
-    print(onlineUsers)
 
 @socketio.on("join_room")
 def handle_join_room(data):
-    print(f"USER WITH ID: {request.sid} has joined the room: {data}")
     join_room(data.get("room")) #IN THE FUTURE: USE request.sid as argument for to=... ex: to = request.sid
     emit("join_room", {"user_name":data.get("user_name"), "room":data.get("room")}, to=data.get("room"))
 
 @socketio.on("send_message")
 def handle_send_message(data):
-    print(f"SENDING: {data}")
     emit("receive_message", data, to=data.get("room"))   
 
 @socketio.on("send_notif")
 def handle_send_notif(data):
-    print(data)
     send_user = get_user(data)
     if(send_user):
-        print(onlineUsers)
-        print(send_user[0])
         emit("receive_notif", {"user_name": data.get("currentUser")}, to=send_user[0].get("socketid"))
     else:
         print("user offline")
