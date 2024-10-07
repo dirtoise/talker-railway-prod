@@ -46,3 +46,5 @@ def create_app(config_obj=DevConfig):
             "Contact": ContactList
         }
     return app
+
+my_app = create_app()
