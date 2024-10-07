@@ -45,6 +45,6 @@ def make_shell_context():
         "Message": Message,
         "Contact": ContactList
     }
-print(os.getenv("PORT"))
+
 if __name__ == '__main__':
     socketio.run(app, port=os.getenv("PORT", default=5000))
