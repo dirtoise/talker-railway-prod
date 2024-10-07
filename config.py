@@ -15,7 +15,7 @@ class DevConfig(Config):
     SESSION_COOKIE_HTTPONLY = True
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:mIpRaWCiYuxHspgTHGrqZbJDbyyuXGrU@autorack.proxy.rlwy.net:32086/railway"
+    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:WFEHJIzHqkszQYoGheSjFrViKpiDkIHk@junction.proxy.rlwy.net:39232/railway"
     DEBUG = False
     SQLALCHEMY_ECHO = False
 
