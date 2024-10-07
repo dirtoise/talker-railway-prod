@@ -15,11 +15,9 @@ class DevConfig(Config):
     SESSION_COOKIE_HTTPONLY = True
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:password@localhost/talker_prod"
+    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:mIpRaWCiYuxHspgTHGrqZbJDbyyuXGrU@autorack.proxy.rlwy.net:32086/railway"
     DEBUG = False
     SQLALCHEMY_ECHO = False
-    PORT = 5000
-    HOST = "0.0.0.0"
 
 class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = "postgresql://postgres:password@localhost/testtalker_prod"

@@ -24,6 +24,7 @@ class UsersResources(Resource):
     @user_ns.marshal_list_with(user_model)
     def get(self):
         users = User.query.all()
+        print(users)
         return users
     
 @user_ns.route("/<user_name>")
