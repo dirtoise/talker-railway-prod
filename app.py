@@ -47,4 +47,4 @@ def make_shell_context():
     }
 
 if __name__ == '__main__':
-    socketio.run(app, port=os.getenv("PORT", default=5000))
+    socketio.run(app, debug=True, port=os.getenv("PORT", default=5000))
