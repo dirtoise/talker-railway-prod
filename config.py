@@ -4,8 +4,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 class Config:
-    SECRET_KEY = config(os.getenv("SECRET_KEY"))
-    SQLALCHEMY_TRACK_MODIFICATIONS = config(os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS"), cast=bool)
+    SECRET_KEY = os.getenv("SECRET_KEY")
+    SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv("SQLALCHEMY_TRACK_MODIFICATIONS")
 
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_PUBLIC_URL")
