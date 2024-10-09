@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 from flask_restx import Api
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
-from config import DevConfig, ProdConfig
+from config import ProdConfig
 from models import User, Message, ContactList
 from exts import db
 from events import socketio
@@ -47,4 +47,4 @@ def make_shell_context():
     }
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=os.getenv("PORT", default=5000))
+    socketio.run(app, port=os.getenv("PORT"))
